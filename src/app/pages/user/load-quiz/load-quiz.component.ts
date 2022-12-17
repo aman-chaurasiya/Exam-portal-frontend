@@ -20,7 +20,7 @@ export class LoadQuizComponent implements OnInit {
       this.id=params['id'];
       if(this.id==0){
         console.log("load All THe quiz");
-        this._quiz.quizzes().subscribe((data)=>{
+        this._quiz.getActiveQuizzes().subscribe((data)=>{
           console.log(data);
           this.quizzes=data;
           
@@ -31,13 +31,13 @@ export class LoadQuizComponent implements OnInit {
   
       }else{
         console.log('load specific quiz');
-        this._quiz.quizzesByCategory(this.id).subscribe((data)=>{
+        this._quiz.getActiveQuizzesOfCategory(this.id).subscribe((data)=>{
           console.log(data);
           
           this.quizzes=data;
         },(error)=>{
           console.log(error);
-          
+ 
           alert("error in loading quiz")
         })
       }
